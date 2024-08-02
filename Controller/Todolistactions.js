@@ -4,9 +4,9 @@ import todoDB from "../Models/Todolist.js";
 
 export const createtodo=async(req,res)=>{
     try {
-        const {name,description}=req.body;
+        const {title,description}=req.body;
 
-        const newtodo=new todoDB({name:name,description:description})
+        const newtodo=new todoDB({title:title,description:description})
         await newtodo.save();
 
         res.status(200).json({newtodo})
@@ -49,9 +49,9 @@ export const gettotoid= async(req,res)=>{
 export const puttodo= async(req,res)=>{
     try {
         const {id}=req.params.id;
-        const {name,description}= req.body;
+        const {title,description}= req.body;
 
-        const iddata=await todoDB.findOneAndUpdate(id,{name:name,description:description})
+        const iddata=await todoDB.findOneAndUpdate(id,{title:title,description:description})
 
         res.status(200).json({iddata})
         

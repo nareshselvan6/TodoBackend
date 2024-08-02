@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 
 const todo=mongoose.Schema({
-    name:String,
-    description:String
+    title:String,
+    description:String,
+    createdate:String
 })
 
 const todoDB=mongoose.model("todoDB",todo);
