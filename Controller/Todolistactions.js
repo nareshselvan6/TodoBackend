@@ -6,7 +6,13 @@ export const createtodo=async(req,res)=>{
     try {
         const {title,description}=req.body;
 
-        const newtodo=new todoDB({title:title,description:description})
+        const createdate=new Date().toString();
+        const firstsplit=createdate.split(" ");
+        const date = [firstsplit[1], firstsplit[2], firstsplit[3]].join("-");
+        console.log(date);
+        
+
+        const newtodo=new todoDB({title:title,description:description,createdate:date})
         await newtodo.save();
 
         res.status(200).json({newtodo})
