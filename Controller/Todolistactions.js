@@ -48,10 +48,12 @@ export const gettotoid= async(req,res)=>{
 
 export const puttodo= async(req,res)=>{
     try {
-        const {id}=req.params.id;
-        const {title,description}= req.body;
+        const id=req.params.id;
+        const {edittitle,editdescription}= req.body;
+        console.log(id,edittitle,editdescription);
+        
 
-        const iddata=await todoDB.findOneAndUpdate(id,{title:title,description:description})
+        const iddata=await todoDB.findOneAndUpdate({_id:id},{title:edittitle,description:editdescription})
 
         res.status(200).json({iddata})
         
